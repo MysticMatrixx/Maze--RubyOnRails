@@ -1,0 +1,63 @@
+
+<% @posts.each do |post| %>
+  <% if post.public? || post.user.id == current_user.id || current_user.roles_name == ['admin'] %>
+  <br>
+  <div style="background-color: #ffffff; border-radius: 17px">
+    <div style="padding: 30px;">
+        <div class="text-muted"> <!-- heading nahi banana hai (post_title)-->
+          <h5>
+            <%= image_tag('maze_logo.svg', class:"me-1") %>
+            <% if post.user.id == current_user.id %>
+              You
+            <% else %>
+              <%= post.user.first_name %>
+            <% end %>
+          </h5>
+          <small>
+            <%= time_ago_in_words(post.created_at) %> ago
+            <small>&#8226</small>
+            <%= post.status.to_str %>
+          </small>
+          <%= render 'posts/three_dots_dropdown', post: post %>
+        </div>
+      <br>
+      <div>
+        <p class="sed"><!--post_description-->
+          <%= post.description %>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div style="margin-left: 32px; color: #60616599">
+      <!--likes-->
+      <%#= if @post.likes.nil? @post.likes =0 else @post.likes end  %>
+      <%#= post.likes.count %> <%#= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+
+      <small><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></small>
+      <small>&#8226</small>
+      <small><%= render 'comments/comment_count', post: post %></small>
+    </div>
+    <hr class="des"><!---------------------------------------------->
+    <div class="d-flex" style="margin-left: 30px;">
+      <!--like_btn-->
+      <%= render 'likes/likings', likeable: post %>
+      <!--comment_btn-->
+      <span style='margin-left: 15rem;' >
+        <%= link_to image_tag('comment.svg', style: 'width:30px') + "  Comments", show_post_path(post) %>
+      </span>
+    </div>
+    <hr class="des"><!---------------------------------------------->
+
+    <div class="container-fluid">
+      <div class style="padding: 10px">
+        <%= render 'comments/comment_menubar', post: post %><br>
+
+        <% post.comments.order(created_at: :desc).each do |comment| %>
+            <%= render 'comments/comment_content', post: post, comment: comment %>
+            <% break %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% end %>

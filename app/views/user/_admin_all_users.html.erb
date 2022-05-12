@@ -1,0 +1,53 @@
+
+<% users.reverse_each  do |u| %>
+  <div class="row align-items-center" style="background-color: #ffffff; border-radius: 23px; height: 4rem">
+    <div class="col">
+          <div class="d-flex align-items-xxl-start" style="padding-top: 13px">
+            <p style="border-radius:25px; background:#F5F6F8; height:57px; width:57px"><%= image_tag('maze_logo.svg', style: 'padding:5px;height:55px; width:55px') %></p>
+
+            <% if u.is_active? %>
+              <h2 style="color: lawngreen;  padding-left: 25px">&#8226</h2>
+            <% else %>
+              <h2 style="color: orangered;  padding-left: 25px">&#8226</h2>
+            <% end %>
+
+            <p class="text-truncate" style="padding-top: 7px; margin-left: 7px; color: #606165; font-size: 21.94px; font-weight: 600;"><%= u.first_name + ' ' + u.last_name %></p>
+          </div>
+    </div>
+    <div class="col">
+          <p style="color:#9FA0A3; padding-left: 5rem;  font-weight: 500">
+            <%= u.phone %>
+          </p>
+    </div>
+    <div class="col">
+          <p style="color: #9FA0A3; ">
+            <%= u.email %>
+          </p>
+    </div>
+    <div class="col">
+        <% if !(u.roles_name == ['admin']) %>
+          <span style="padding-left: 5rem;">
+            <% if u.is_active? %>
+              <a href="<%= change_status_path(u) %>">
+              <button style="height: 2.2rem;" type="button" class="btn-outline-danger"><small>
+                Deactivate
+              </small></button>
+              </a>
+            <% else %>
+              <a href="<%= change_status_path(u) %>">
+                <button style="height: 2.2rem;" type="button" class="btn-outline-success"><small>
+                    Activate
+                </small></button>
+              </a>
+            <% end %>
+          </span>
+
+          <span style="float: right;">
+              <a class="three-dots" href="<%= edit_user_path(u) %>"></a>
+          </span>
+        <% else %>
+          <h4 style="float: right; padding-right: 2rem">ADMIN</h4>
+        <% end %>
+    </div>
+  </div><br>
+<% end %>

@@ -1,0 +1,24 @@
+<%= render "layouts/body_navbar" %>
+<%= render 'layouts/pop_ups' %>
+
+  <div style="margin-top: 7rem;">
+      <div style="text-align: center; font-family: Montserrat">
+        <div>
+          <h3>Social media shared today,</h3>
+          <h3>tomorrow or by location</h3>
+        </div>
+
+        <div style="margin-top: 4rem">
+          <h6>Discover with Maze</h6>
+          <div class="d-flex" style="justify-content: center; padding-top: 2rem">
+            <div>
+              <%=  link_to 'Create account', new_user_registration_path, class:'btnf btn btn-primary'  %>
+            </div>
+            <h6 style="margin-top: 10px;margin-left: 30px; margin-right: 30px">or</h6>
+            <div>
+              <%=  link_to 'Login', new_user_session_path, class:'btnf btn btnp'  %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

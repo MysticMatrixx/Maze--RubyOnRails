@@ -1,0 +1,25 @@
+<div class="text-truncate">
+  <div class="d-flex">
+    <h5 style="width: 100%">
+      <%= image_tag('maze_logo.svg', style: 'margin-right:1rem') %>
+      <%= comment.user.first_name %>
+    </h5>
+
+    <div class="d-flex" style="padding-bottom: 22px">
+      <%= render 'likes/comments_likings', likeable: comment %>
+    </div>
+  </div>
+  <div class="d-flex">
+    <p style="width: 100%; margin-left:2.9rem"><%= comment.content %></p>
+
+    <div>
+      <small><%= time_ago_in_words( comment.created_at ) %></small>
+    </div>
+  </div>
+  <% if  (current_user.roles_name == ['admin']) || ( current_page?(post_path(post)) &&  current_user.id == comment.user.id ) %>
+  <%# if%>
+    <div class="container-fluid">
+      <%= button_to "Delete", [post, comment], class: "btn btn-sm btn-outline-secondary", method: :delete %>
+    </div>
+  <% end %>
+</div>

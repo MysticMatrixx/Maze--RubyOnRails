@@ -1,0 +1,49 @@
+<%= render "layouts/body_navbar" %>
+
+<div>
+  <div style="margin-right: 32rem; margin-left: 32rem; padding-top: 4rem">
+    <div class="bar">
+      <div class>
+        <h2 style="font-family: Poppins">Login</h2>
+      <%= render 'layouts/pop_ups', style:'text-align:center' %>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div style="padding-top: 2rem">
+            <div class="field">
+              <small class='ting'>
+                <%= f.label :email %><br />
+              </small>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'inputx' %>
+            </div>
+
+            <div class="field" style="padding-top: 20px">
+              <small class="ting">
+                <%= f.label :password %><br />
+              </small>
+              <%= f.password_field :password, autocomplete: "current-password", class:'inputx' %>
+            </div>
+          </div>
+
+          <div style="padding-top: 2rem; padding-bottom: 2rem;">
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me, class:'form-check-input', style:'background-color:transparent; border-color:#ffffff; margin-right:7px;' %>
+                <small class="ting"><%= f.label :remember_me %></small>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="actions rec" style="padding-top: 20px">
+            <div style="width: 50%">
+              <%= f.submit "Login", class:'btn btn-primary btn-primaryx' %>
+            </div>
+          </div>
+        <% end %>
+
+        <small>
+          <%= render "devise/shared/links" %>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

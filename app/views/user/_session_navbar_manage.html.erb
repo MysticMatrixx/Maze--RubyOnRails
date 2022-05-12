@@ -1,0 +1,31 @@
+
+<% if current_user %>
+
+      <% if current_page?(posts_path)%>
+        <!--<ul class></ul>-->
+        <div class style="margin-right: 10rem; width: 65%">
+          <input class="form-control me-5" style="font-family: FontAwesome !important; border-radius: 14px" type="search" placeholder="&#xf002  Search for something here...">
+        </div>
+      <% elsif current_page?(admin_manager_menu_path) || current_page?('/manage/add/new_user') %>
+        <div class="pt-1">
+          <h4 class style="padding-left: 13px">User Management</h4>
+        </div>
+      <% end %>
+
+  <div class="d-flex" style="position: absolute; right: 0; top:3px">
+    <a href="<%= edit_user_registration_path %>">
+       <button type="button" class="btn btn-outline-primary rounded-start">
+        <!--<div class="text-truncate">-->
+          <small style="margin-right: 1rem; padding-top: 12px"> <%= current_user.first_name + " " + current_user.last_name %> </small>
+          <!--<small> <br><%#= current_user.roles_name.first %> </small>-->
+        <!--</div>-->
+        <%= image_tag('profile.jpg', class: 'rounded-start', style: 'height:50px; width:50px') %>
+       </button>
+    </a>
+  </div>
+
+<% end %>
+
+    <!--<small>-->
+      <%#=  current_user.roles  %>
+    <!--</small>-->

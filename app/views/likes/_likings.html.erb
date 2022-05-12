@@ -1,0 +1,8 @@
+<% like = current_user.likes.find_by(likeable: likeable) %>
+<% if like.nil? %>
+  <%= button_to image_tag('like.svg', style: 'width:30px', class: 'like_btn') + "  Like", likes_path, params: { like: { likeable_id: likeable.id, likeable_type: likeable.class.to_s }}, method: :post %>
+   <%#= button_to 'Like', likes_path, params: { like: { post_id: post.id }}, method: :post  %>
+<% else %>
+  <%= button_to image_tag('liked_btn.svg', style: 'width: 30px', class: 'like_btn') + " Unlike", { controller: 'likes', action: 'destroy', id: like.id },
+                method: :delete %>
+<% end %>

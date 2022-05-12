@@ -1,0 +1,23 @@
+
+<div class="p-4">
+  <div style="padding: 39px; background-color: #F9FAFB; border-radius: 27px;">
+    <div style="padding: inherit; border-radius: inherit; background-color: #FFFFFF" class="container-fluid">
+      <%= form_with(model: @post, url: show_post_path ) do |post| %>
+        <p>
+          <%= post.text_area( :description, {:class => 'form-control', style: 'border-radius: 23px; height:290px'}) %>
+        </p>
+
+        <div class="d-flex">
+          <div style="width: 100%">
+            <%= post.select :status, ['public', 'private'], selected: 'public', class:'dropdown-menu' %>
+          </div>
+          <div class="d-flex" style="float: right">
+            <%= post.submit('  Update  ',{:class => 'btn btn-primary'}) %><br>
+            <!--<%#= link_to ' Update ', update_post_path(@post), method: :patch,:class => 'btn btn-primary' %><br>-->
+            <%= link_to "Cancel", show_post_path , :class => "btn" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

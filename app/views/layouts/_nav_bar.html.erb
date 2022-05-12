@@ -1,0 +1,12 @@
+
+    <!--FULL NAVBAR-->
+    <div class="container-fluid" style="padding-bottom: 5px">
+      <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-white">
+        <div class="d-flex" style="width: 100%">
+            <div style="padding-top: 4px; margin-right: 5rem">
+              <%= link_to image_tag('maze_icon.svg'), posts_path %>
+            </div>
+            <%= render 'user/session_navbar_manage' %>
+        </div>
+      </nav>
+    </div>

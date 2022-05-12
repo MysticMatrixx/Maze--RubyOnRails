@@ -1,0 +1,16 @@
+  <% if  current_user.id == post.user.id || current_user.roles_name == ['admin']  %>
+    <span style="float: right;">
+      <div class="dropdown-container" tabindex="-1">
+        <div class="three-dots"></div>
+        <div class="dropdown">
+          <% if current_page?(posts_path) %>
+            <%= link_to 'Show', show_post_path(post) %>
+          <% else %>
+            <%= link_to 'Home', posts_path %>
+          <% end %>
+          <div><a><%= link_to 'Edit', edit_post_path(post.id) %></a></div>
+          <div><a><%= link_to 'Delete', delete_post_path(post.id) %></a></div>
+        </div>
+      </div>
+    </span>
+  <% end %>

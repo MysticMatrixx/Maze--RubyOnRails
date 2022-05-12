@@ -1,0 +1,99 @@
+
+<%= render "layouts/body_navbar" %>
+
+<div class="container-fluid">
+  <div class="justify-content-center" style="margin-top: 0.5rem;margin-right: 10rem;">
+
+    <div style="margin-left: 12rem; padding-top: 3rem; padding-bottom: 5rem;">
+      <div class="container" style="border-radius: 17px; padding-left: 18rem; backdrop-filter: blur(20px); color: #ffffff;background: linear-gradient(152.97deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);">
+        <div style="padding-top: 30px">
+          <h2 style="font-size: large">Create account</h2>
+          <p class="ting" style="font-size: smaller">For professionals, learn professionals.</p><br>
+        </div>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="d-flex">
+          <div class="field">
+            <small class="ting">
+              <%= f.label :first_name, as: 'First Name'%>
+            </small><br>
+            <%= f.text_field :first_name, class:'new_input' %>
+          </div>
+
+          <div style="margin-left: 2rem">
+              <div class="field">
+                <small class="ting">
+                  <%= f.label :last_name, as: 'Last Name' %>
+                </small><br>
+                <%= f.text_field :last_name, class:'new_input' %>
+              </div>
+          </div>
+        </div>
+
+        <div class="d-flex" style="padding-top: 20px">
+          <div class="field">
+              <div class="field">
+                <small class="ting">
+                  <%= f.label :phone, as: 'Phone Number' %>
+                </small><br>
+                <%= f.phone_field :phone, type:'text', maxlength:'10', row:1, pattern:"[6-9]{1}[0-9]{9}", class:'new_input' %>
+              </div>
+          </div>
+
+          <div style="margin-left: 2rem">
+            <small class="ting">
+              <%= f.label :email %>
+            </small><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'@', class:'new_input' %>
+          </div>
+        </div>
+
+        <div class="d-flex" style="padding-top: 20px">
+          <div class="field">
+            <small class="ting">
+              <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+            </small>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class:'new_input' %>
+          </div>
+
+          <div style="margin-left: 2rem">
+              <div class="field">
+                <small class="ting">
+                  <%= f.label :password_confirmation, as: 'Confirm password' %>
+                </small><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'new_input' %>
+              </div>
+          </div>
+        </div>
+
+          <div style="padding-top: 15px">
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me, class:'form-check-input', style:'background-color:transparent; border-color:#ffffff; margin-right:7px;' %>
+                <small class="ting"><%= f.label :remember_me %></small>
+              </div>
+            <% end %>
+
+            <div class="field">
+              <%= f.check_box :remember_me, class:'form-check-input', style:'background-color:transparent; border-color:#ffffff; margin-right:7px;' %>
+              <small class="ting" >I agree to all the <a href="#" style="color: dodgerblue">Terms</a> and <a href="#" style="color: dodgerblue">Privacy policy</a> </small>
+            </div>
+          </div>
+
+          <div class="actions" style="padding-top: 20px">
+              <%= f.submit "Sign Up!", class:'btn btn-primary' %>
+          </div>
+        <% end %>
+
+        <div style="padding-top: 6px; padding-bottom: 1.45rem">
+          <small class="ting">Already have an account? <%= render "devise/shared/links" %></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

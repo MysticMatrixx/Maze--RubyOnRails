@@ -1,0 +1,13 @@
+<div class style="margin-top: 0.1rem;padding: 10px">
+      <div class="container-fluid" style>
+        <h6 style="margin-bottom: 2rem; color: #606165">Users List</h6>
+        <% user.each do |u| %>
+          <% if !u.posts.empty? %>
+            <a class="d-flex" style>
+              <p style="border-radius:25px;background:#F5F6F8;height:47px; width:47px;margin-right: 1rem"><%= image_tag('maze_logo.svg', style: 'padding:3px;height:45px; width:45px') %></p>
+              <h6 class="text-truncate" style="padding-top: 10px; color: #9FA0A3;"><%= u.first_name + " " + u.last_name  %> </h6>
+            </a>
+          <%  end %>
+        <% end %>
+      </div>
+</div>

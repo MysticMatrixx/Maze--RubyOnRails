@@ -1,0 +1,83 @@
+
+<div>
+  <div class="d-flex align-items-stretch">
+
+    <%= render 'user/session_sidebar_manager' %>
+
+    <div class="p-2 d-flex" style="width: 100%">
+      <div class="col-10 bg-white" style="width: 99%;">
+        <div class="mt-2" style="padding: 9px; background-color: #F9FAFB; border-radius: 17px;">
+
+          <div class="container" style="border-radius: 17px; color: #ffffff;">
+
+            <h3 class="fnt">Add Users</h3>
+
+            <%= form_with scope: @user, url: user_create_path, local: true do |f| %>
+                <%= render 'layouts/pop_ups' %>
+
+            <div class="d-flex pt-5">
+              <div class="field">
+                <%= f.text_field :first_name, placeholder:'First Name',  class: 'personal' %>
+              </div>
+
+              <div style="margin-left: 2rem">
+                  <div class="field">
+                    <%= f.text_field :last_name, placeholder:'Last Name' , class: 'personal' %>
+                  </div>
+              </div>
+            </div>
+
+            <div class="d-flex" style="padding-top: 2.2rem">
+              <div class="field">
+                  <div class="field">
+                    <%= f.phone_field :phone, type:'text', maxlength:'10', row:1, class: 'personal', pattern:"[6-9]{1}[0-9]{9}", placeholder:'Mobile No.'%>
+                  </div>
+              </div>
+
+              <div style="margin-left: 2rem">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'@Email', class: 'personal'%>
+              </div>
+            </div>
+
+            <div class="d-flex" style="padding-top: 20px">
+              <div class="field rec">
+                <small class="ting">
+                  <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                </small>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password", placeholder:'Password', class: 'personal' %>
+              </div>
+            </div>
+
+              <div class="field" style="margin-top: 3rem; margin-bottom: 3rem">
+                <h4 style="margin-bottom: 2rem">Assign Role </h4>
+                  <!--<input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">-->
+                  <!--<label class="btn btn-secondary" for="option1" style="margin-right: 1rem">Admin</label>-->
+
+                  <!--<input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" checked>-->
+                  <!--<label class="btn btn-secondary" for="option2">User</label>-->
+
+                  <%= f.radio_button :role, "admin", :id=>"first", class:"btn-check"%>
+                  <%= f.label :role, "Admin", for:'first', :value => "admin", :class=>"btn btn-secondary " %>
+              <!--<label for="first" class="btn btn-secondary" type="radio">Admin</label>-->
+                                                                               <!--Also works checked:'true'-->
+                  <%= f.radio_button :role, "user", :id=>"second", class:"btn-check", checked:true%>
+                  <%= f.label :role, "User", for:'second', :value => "user", :class=>"btn btn-secondary", style:"margin-left:1rem" %>
+              <!--<label for="second" class="btn btn-secondary" style="margin-left:1rem" type="radio">User</label>-->
+
+              </div>
+
+                  <%= f.submit "Create User", class:'btn btn-primary personal', style:'margin-top:1.3rem; border-radius: 17px; float: right' %>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

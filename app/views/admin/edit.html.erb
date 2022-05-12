@@ -1,0 +1,50 @@
+<div>
+  <div class="d-flex align-items-stretch">
+
+    <%= render 'user/session_sidebar_manager' %>
+
+    <div class="col-10 bg-white">
+        <div style="padding: 10px; margin-top: 1rem; background-color: #F9FAFB; border-radius: 17px;">
+          <div class="container-fluid" style="padding: 27px; border-radius: 16px">
+            <h2>Edit User</h2>
+            <%= form_with scope: @user, url: update_user_path(@user), html: { method: :patch } do |f| %>
+
+                <div class="d-flex">
+                  <div class="field">
+                    <%= f.label :first_name, as: 'First Name'%><br>
+                    <%= f.text_field :first_name, autocomplete: "first_name", class:'inputx' %>
+                  </div>
+
+                  <div class="field" style="margin-left: 2rem">
+                    <%= f.label :last_name, as: 'Last Name' %><br>
+                    <%= f.text_field :last_name, autocomplete: "last_name", class:'inputx' %>
+                  </div>
+                </div>
+
+              <div class="d-flex" style="margin-top: 1.2rem">
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'inputx' %>
+                </div>
+
+                <div class="field" style="margin-left: 2rem">
+                   <%= f.label :phone, as: 'Phone No.' %><br>
+                  <%= f.phone_field :phone, autofocus: true, autocomplete: "phone", class:'inputx' %>
+                </div>
+              </div>
+
+              <div class="actions" style="margin-top: 1rem">
+                <%= f.submit "Update", class:'btn btn-outline-success' %>
+              </div>
+            <% end %>
+
+            <h4 style="margin-top: 2em">Don't need anymore?</h4>
+
+            <p><%= button_to "Delete my account", destroy_user_path(@user), class:'btn-outline-danger', data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>

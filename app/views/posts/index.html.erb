@@ -1,0 +1,27 @@
+<div>
+  <div class="d-flex align-items-stretch">
+
+    <%= render 'user/session_sidebar_manager' %>
+
+    <div class="p-2" style="width: 100%">
+      <div class="col-10 bg-white" style="width: 99%">
+        <div style="padding: 9px; background-color: #F9FAFB; border-radius: 17px;">
+        <div style='text-align:center'>
+          <%= render 'layouts/pop_ups' %>
+        </div>
+          <div class="container-fluid" style="padding: 27px; border-radius: 16px">
+            <%= render 'posts/post_menu' %>
+            <%= render 'posts/all_posts' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if current_user.roles_name == ['admin'] %>
+      <div style="width: 20%;">
+        <%= render 'admin/admin_sidebar', user: @user %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

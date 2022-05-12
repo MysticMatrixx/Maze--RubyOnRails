@@ -1,0 +1,84 @@
+<div>
+  <div class="d-flex align-items-stretch">
+
+    <%= render 'user/session_sidebar_manager' %>
+
+      <div class="col-10 bg-white p-2 pt-3" style="width: 83%;" >
+
+        <div style="padding: 40px; background-color: #F9FAFB; border-radius: 27px">
+          <div style="background-color: white; border-radius: 17px">
+            <div style="padding: 30px;">
+              <div class="text-muted"> <!-- heading nahi banana hai (post_title)-->
+                  <h5><%= image_tag('maze_logo.svg', style: 'margin-right:1rem') %>
+                      <%= @post.user.first_name %></h5>
+                  <small>
+                    <%= time_ago_in_words(@post.created_at) %> ago
+                    <small>&#8226</small>
+                    <%= @post.status.to_str %>
+                  </small>
+                <%= render 'posts/three_dots_dropdown', post: @post %>
+              </div>
+              <br>
+              <div>
+                <p class="sed"><!--post_description-->
+                  <%= @post.description %>
+                </p>
+              </div>
+            </div>
+            <br>
+              <div style="margin-left: 32px; color: #60616599">
+                <small><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></small>
+                <small>&#8226</small>
+                <small><%= render 'comments/comment_count', post: @post %></small>
+            </div>
+              <hr class="des"><!---------------------------------------------->
+                <div class="d-flex" style="margin-left: 30px;">
+                  <!--like_btn-->
+                  <%= render 'likes/likings', likeable: @post %>
+                  <!--comment_btn-->
+                  <span style='margin-left: 15rem;' >
+                    <%= link_to image_tag('comment.svg', style: 'width:30px') + "  Comments", show_post_path(@post) %>
+                  </span>
+                </div>
+              <hr class="des"><!---------------------------------------------->
+            <div class="container-fluid" style="padding-left: 31px; padding-right: 31px">
+              <%= render 'comments/comment_menubar', post: @post %>
+            </div>
+            <h5 style="padding-top: 50px;padding-left: 28px;color: #60616599;">Comments</h5>
+            <div class="container-fluid">
+              <% @comments.order(created_at: :desc).each do |comment| %>
+                <hr class><!---------------------------------------------->
+                <div class="container-fluid" style="padding: 10px;">
+                    <div style="padding-top: 10px; padding-bottom: 10px">
+                      <%= render 'comments/comment_content', post: @post, comment: comment %>
+                    </div>
+                </div>
+              <% end %><br>
+            </div>
+            </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+
+
+
+<!--  <div class>-->
+<!--    <div class="row">-->
+<!--      <div class="col-1 bg-whtie p-2 me-lg-5">-->
+
+        <!--Button-side-bar-->
+<!--        <div class='d-flex' style>-->
+<!--          <div class="container-fluid">-->
+<!--            <div style="align-content: flex-start; width: 11rem;">-->
+                <%#= render 'user/session_sidebar_manager', post: @post %>
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->

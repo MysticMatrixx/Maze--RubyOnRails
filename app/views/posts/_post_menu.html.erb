@@ -1,0 +1,32 @@
+
+<div style="padding: inherit; border-radius: inherit; background-color: #FFFFFF" class="container-fluid">
+    <%#= form_with scope: :post, url: posts_path, local: true do |post| %>
+    <%= form_with model: Post do |post| %>
+      <p>
+    <!--placeholder what's Happening-->
+      <%= post.text_area( :description, { class: 'form-control',  :placeholder => "What's happening ?", style: 'background-color:#F5F6F8; border-radius: 17px; border-color:#F5F6F8', rows:1 }) %>
+
+      </p>
+      <p>
+        <div style="float: right;">
+            <!--post_btn--><!--float:right--><!--<%#= post.label :status %><br>-->
+
+          <%= post.select :status, ['public', 'private'], selected: 'public', class:'dropdown-menu' %>
+          <%= post.submit '  Post  ', class:'btn btn-primary'%>
+        </div>
+      <% end %>
+
+          <div class="btn">
+            <!--live video btn-->
+            <%= link_to image_tag('live_video.png') %>
+          </div>
+          <div class="btn">
+            <!--photo/video btn-->
+            <%= link_to image_tag('Photo_video.png') %>
+          </div>
+          <div class="btn">
+            <!--feeling btn-->
+            &nbsp;&nbsp;<%= link_to image_tag('Smiley.png') %>
+          </div>
+        </p>
+    </div>

@@ -1,0 +1,14 @@
+
+<div style="padding-top: 1px;">
+    <%= form_with(model: [post, post.comments.create]) do |p| %>
+      <div class="d-flex">
+        <div style="width: 100%;">
+          <%= p.text_area( :content, { class: 'form-control',  :placeholder => "Write a comment", style: 'height: 55px; width:98%; margin-right:auto; background-color:#F5F6F8; border-radius: 14px; border-color:#F5F6F8; float:left;' }) %>
+          <%#= p.submit type:"button", src: 'post_comment.svg', class: 'btn btn-lg fx', style: 'border-radius: 20px; background-color:#EAF4FF; float:right; padding:19px' %>
+          <%#= link_to image_tag('post_comment.svg', class: 'btn btn-lg fx', style: 'border-radius: 20px; background-color:#EAF4FF; float:right; padding:19px'), p.submit %>
+
+        </div>
+          <%= image_submit_tag('post_comment.svg', class: 'btn btn-lg fx', style: 'border-radius: 20px; background-color:#EAF4FF; float:right; padding:19px' ) %>
+      </div>
+    <% end %>
+</div>
