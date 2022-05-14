@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  # resource :admin
+
   resource :likes, only: %i[create destroy]
 
   #VERB     URI PATTERN       CONTROLLER ACT        PREFIX           #
@@ -24,7 +26,12 @@ Rails.application.routes.draw do
   get 'likes/:id'  ,   to: 'likes#create',  as: 'delete_like', method: :delete
 
   get 'manage/users', to: 'admin#manage', as: 'admin_manager_menu'
-  get 'manage/report', to: 'admin#report', as: 'create_report'
+
+  get 'manage/reports', to: 'admin#report', as: 'create_report'
+
+  get 'all_counts', to: 'admin#all_pcl_report', as: 'all_report'
+  get 'all_limited_tens', to: 'admin#tenp_report', as: 'limited_report'
+  get 'all_descripted', to: 'admin#postwise_report', as: 'descripted_report'
 
   get 'manage/add/new_user', to: 'admin#new', as: 'admin_new_user'
   post 'create', to: 'admin#create', as: 'user_create'

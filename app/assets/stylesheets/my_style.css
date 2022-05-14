@@ -189,3 +189,64 @@
     -webkit-text-stroke-width: thin;
     text-align: center;
   }
+
+    .mast {
+      text-align: center;
+      margin-left: 2.5rem;
+      width: 24%
+  }
+
+  .dekho {
+      border-radius: 30px;
+      background-color: #fff;
+      margin-top: -3.75rem;
+      box-shadow: 0 3px 2px rgb(0 0 0 / 15%);
+  }
+
+  .kd {
+      padding-top:0.65rem;
+      margin-top: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff;
+      text-align:-webkit-center;
+      width: 7.5rem;
+      height: 7.5rem;
+      border-radius: 50%
+  }
+
+  .dekhsize {
+    font-weight: 700;
+  }
+
+  .trash {
+      color: #9FA0A3;
+  }
+
+  .meh, h5 {
+      margin-top: 3rem;
+      color: #4F5B67;
+      font-family: Mulish;
+  }
+
+  .meh label {
+      font-size: 18px;
+      font-weight: 600;
+  }
+
+  .meh input {
+      background-color: #F9FAFB;
+  }
+
+  .dot {
+      height: 6rem;
+      width: 6rem;
+      border-radius: 50%;
+      display: inline-table;
+      background: linear-gradient(142.61deg, #377DFF 8.95%, #2DC9EA 92.76%);
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  }
+  span img {
+    padding-top:0.9em;
+      inline-size:4em;
+  }

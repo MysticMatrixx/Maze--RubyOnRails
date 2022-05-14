@@ -8,14 +8,53 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
-  def report
+  def report; end
+
+  def all_pcl_report
     @users = User.all
     respond_to do |format|
       format.html
-      format.csv { send_data @users.name_posts_comments_likes, filename: "All_users_report_#{Date.today}.csv" }
-      format.xlsx { send_data @users.name_posts_comments_likes, filename: "All_users_report_#{Date.today}.xlsx" }
+      format.csv do
+        send_data @users.name_posts_comments_likes,
+                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
+      end
+      format.xlsx do
+        send_data @users.name_posts_comments_likes,
+                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+      end
     end
   end
+
+  def tenp_report
+    @users = User.all
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data @users.up10_name_posts_comments_likes,
+                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
+      end
+      format.xlsx do
+        send_data @users.up10_name_posts_comments_likes,
+                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+      end
+    end
+  end
+
+  def postwise_report
+    @posts = Post.all
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data @posts.description_comments_likes,
+                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
+      end
+      format.xlsx do
+        send_data @posts.description_comments_likes,
+                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+      end
+    end
+  end
+
 
   def new; end
 

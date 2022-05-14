@@ -1,3 +1,6 @@
 
-<%= link_to '.CVS', create_report_path(format: 'csv'), class:'btn btn-outline-success', style:'margin-right: 1rem' %>
-<%= link_to 'Excel', create_report_path(format: 'xlsx'), class:'btn btn-outline-success', style:'margin-right: 1rem' %>
+<%= link_to '.CVS', all_report_path(format: 'csv'), class:'btn btn-outline-success', style:'margin-right: 1rem' %>
+<%= link_to 'Excel', all_report_path(format: 'xlsx'), class:'btn btn-outline-success', style:'margin-right: 1rem' %>
+
+<%#= f.radio_button :role, "admin", :id=>"first", class:"btn-check"%>
+<%#= f.label :role, "Admin", for:'first', :value => "admin", :class=>"btn btn-secondary " %>

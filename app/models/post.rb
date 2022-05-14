@@ -10,4 +10,15 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :destroy
 
   validates :description, presence: true, length: { minimum: 5 }
+
+
+  def self.description_comments_likes
+    CSV.generate(headers: true) do |csv|
+      csv << %w[description comments likes]
+
+      all.each do |post|
+        csv << [post.description, post.comments.count, post.likes.count]
+      end
+    end
+  end
 end

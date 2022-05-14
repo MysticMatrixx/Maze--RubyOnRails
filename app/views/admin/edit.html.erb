@@ -11,12 +11,12 @@
 
                 <div class="d-flex">
                   <div class="field">
-                    <%= f.label :first_name, as: 'First Name'%><br>
+                    <%= f.label :first_name, 'First Name'%><br>
                     <%= f.text_field :first_name, autocomplete: "first_name", class:'inputx' %>
                   </div>
 
                   <div class="field" style="margin-left: 2rem">
-                    <%= f.label :last_name, as: 'Last Name' %><br>
+                    <%= f.label :last_name, 'Last Name' %><br>
                     <%= f.text_field :last_name, autocomplete: "last_name", class:'inputx' %>
                   </div>
                 </div>
@@ -28,10 +28,15 @@
                 </div>
 
                 <div class="field" style="margin-left: 2rem">
-                   <%= f.label :phone, as: 'Phone No.' %><br>
+                   <%= f.label :phone, 'Phone No.' %><br>
                   <%= f.phone_field :phone, autofocus: true, autocomplete: "phone", class:'inputx' %>
                 </div>
               </div>
+
+<!--              <div class="field" style="margin-top: 1rem">-->
+<!--                <%#= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />-->
+                <%#= f.password_field :password, autocomplete: "new-password", class:'inputx' %>
+<!--              </div>-->
 
               <div class="actions" style="margin-top: 1rem">
                 <%= f.submit "Update", class:'btn btn-outline-success' %>

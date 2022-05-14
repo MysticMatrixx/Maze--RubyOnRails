@@ -37,7 +37,21 @@ class User < ApplicationRecord
       csv << %w[id name posts comments likes]
 
       all.each do |user|
-        csv << [user.id, "#{user.first_name} #{user.last_name}", user.posts.count, user.comments.count, user.likes.count]
+        csv << [user.id, "#{user.first_name} #{user.last_name}",
+                user.posts.count, user.comments.count, user.likes.count]
+      end
+    end
+  end
+
+  def self.up10_name_posts_comments_likes
+    CSV.generate(headers: true) do |csv|
+      csv << %w[id name posts comments likes]
+
+      all.each do |user|
+        if user.posts.count >= 10
+          csv << [user.id, "#{user.first_name} #{user.last_name}",
+                  user.posts.count, user.comments.count, user.likes.count]
+        end
       end
     end
   end
