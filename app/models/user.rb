@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   after_create :assign_default_role, if: :new_record?
+
   validates :phone, presence: true,
                     uniqueness: true,
                     length: { minimum: 10, maximum: 10 },

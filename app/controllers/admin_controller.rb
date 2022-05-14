@@ -2,13 +2,29 @@ class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :is_admin?
 
-  before_action :set_user, only: %i[edit update destroy]
+  before_action :set_user, only: %i[edit update destroy change_password update_password]
 
   def manage
     @users = User.all
   end
 
-  def report; end
+  # controllers are not nessecary to create
+  # if the view is created with its routes
+  # it works just fine until we need something more to do with like interaction with models
+
+  # def report; end
+
+  # def import_users; end
+
+  # def change_password; end
+
+  def update_password
+    if @user.update(password_params)
+      redirect_to admin_manager_menu_path, notice: 'User password successfully updated!'
+    else
+      redirect_back(fallback_location: :change_password, alert: @user.errors.full_messages.to_sentence)
+    end
+  end
 
   def all_pcl_report
     @users = User.all
@@ -31,11 +47,11 @@ class AdminController < ApplicationController
       format.html
       format.csv do
         send_data @users.up10_name_posts_comments_likes,
-                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
+                  filename: "User_more_than_10_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
       end
       format.xlsx do
         send_data @users.up10_name_posts_comments_likes,
-                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+                  filename: "User_more_than_10_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
       end
     end
   end
@@ -46,17 +62,16 @@ class AdminController < ApplicationController
       format.html
       format.csv do
         send_data @posts.description_comments_likes,
-                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
+                  filename: "All_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
       end
       format.xlsx do
         send_data @posts.description_comments_likes,
-                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+                  filename: "All_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
       end
     end
   end
 
-
-  def new; end
+  # def new; end
 
   def create
     @user = User.new(user_params)
@@ -67,18 +82,18 @@ class AdminController < ApplicationController
         format.html { redirect_to admin_manager_menu_path, notice: 'User created successfully' }
         # format.json { render :show, status: :created, location: @post }
       else
-        format.html { redirect_back(fallback_location: admin_new_user_path, alert: 'Fields are not filled properly.') }
+        format.html { redirect_back(fallback_location: admin_new_user_path, alert: @user.errors.full_messages.to_sentence) }
       end
     end
   end
 
-  def edit; end
+  # def edit; end
 
   def update
     if @user.update(kam_ka_params)
       redirect_to admin_manager_menu_path, notice: 'User successfully updated!'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, alert: @user.errors.full_messages.to_sentence
     end
   end
 
@@ -88,6 +103,10 @@ class AdminController < ApplicationController
   end
 
   private
+
+  def password_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
 
   def set_user
     @user = User.find(params[:id])

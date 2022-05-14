@@ -70,21 +70,21 @@
       border-radius: 13px;
       border-color: #0000001A;
       width: 8rem;
-    }
+  }
 
-    .fnt {
+  .fnt {
       font-family: Inria Sans;
       color: #606165;
-    }
+  }
 
-   .personal {
+  .personal {
       border-color: #0000001A;
       width: 22rem;
       height: 3rem;
       border-radius: 13px;
       padding-left: 1rem;
       font-family: Inria Sans;
-   }
+  }
 
   select {
       margin-right: 1rem;
@@ -190,10 +190,10 @@
     text-align: center;
   }
 
-    .mast {
+  .mast {
       text-align: center;
-      margin-left: 2.5rem;
-      width: 24%
+      margin-left: 1rem;
+      width: 22%;
   }
 
   .dekho {
@@ -223,7 +223,7 @@
       color: #9FA0A3;
   }
 
-  .meh, h5 {
+  .meh, .lip {
       margin-top: 3rem;
       color: #4F5B67;
       font-family: Mulish;
@@ -246,7 +246,20 @@
       background: linear-gradient(142.61deg, #377DFF 8.95%, #2DC9EA 92.76%);
       box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
   }
-  span img {
+
+  .imgspan img {
     padding-top:0.9em;
       inline-size:4em;
+  }
+
+  .upuser {
+      margin-left: 5px;
+      border: none;
+      background-color: #fff;
+      padding-right: 19px;
+      text-align: center;
+      font-family:'Cascadia Code PL';
+      font-weight: 600;
+      border-radius: 17px;
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
   }

@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   get 'manage/reports', to: 'admin#report', as: 'create_report'
 
+  get 'manage/import/user', to: 'admin#import_users', as: 'upload_users'
+
   get 'all_counts', to: 'admin#all_pcl_report', as: 'all_report'
   get 'all_limited_tens', to: 'admin#tenp_report', as: 'limited_report'
   get 'all_descripted', to: 'admin#postwise_report', as: 'descripted_report'
@@ -36,8 +38,14 @@ Rails.application.routes.draw do
   get 'manage/add/new_user', to: 'admin#new', as: 'admin_new_user'
   post 'create', to: 'admin#create', as: 'user_create'
   delete 'destroy/:id', to: 'admin#destroy', as: 'destroy_user'
+
+  # EDIT USER DETAILS
   get 'edit/:id', to: 'admin#edit', as: 'edit_user'
   patch 'update/:id', to: 'admin#update', as: 'update_user'
+
+  # EDIT USER PASSWORDS
+  get 'update_password/user/:id', to: 'admin#change_password', as: 'edit_password_user'
+  patch 'update_password/:id', to: 'admin#update_password', as: 'update_password_user'
 
   devise_scope :user do
     get 'change_status/:id', to: 'users/sessions#change_status', as: 'change_status'

@@ -12,7 +12,7 @@
        </div>
 
      <% if current_user %>
-       <div style="padding-bottom: 17px">
+       <div style="padding-bottom: 11px">
          <a href="<%= edit_user_registration_path %>">
            <button type="button" class="outline btn btn-outline-primary col-11 me-2">
              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -23,7 +23,7 @@
        </div>
 
      <% if current_user.roles_name == ['admin'] %>
-       <div class="text-truncate" style="padding-bottom: 17px">
+       <div class="text-truncate pt-1" style="padding-bottom: 17px">
          <a href="<%= admin_manager_menu_path  %>">
            <button type="button" class="outline btn btn-outline-primary col-11 me-2">
              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
