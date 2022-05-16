@@ -1,6 +1,5 @@
 require_relative 'boot'
 
-# require 'xls'
 require 'csv'
 require 'rails/all'
 

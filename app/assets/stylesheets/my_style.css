@@ -263,3 +263,37 @@
       border-radius: 17px;
       box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
   }
+
+  .posts{
+      padding: 27px;
+      border-radius: 16px;
+      overflow-y:scroll;
+      height:87.2vh;
+  }
+
+  .show {
+      border-radius: 16px;
+      overflow-y:scroll;
+      height:82.7vh;
+  }
+
+  .search_page {
+      padding-left: 10px;
+      border-radius: 16px;
+      overflow-y:scroll;
+      height:81.6vh;
+  }
+
+  .scbar_hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .importss {
+      text-align: center;
+      border: dotted #999999;
+      border-radius: 15px;
+      padding: 10rem;
+      margin: 2rem;
+      font-size: 2rem;
+      color: #24b068;
+  }

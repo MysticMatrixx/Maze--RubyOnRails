@@ -3,11 +3,18 @@
 
     <%= render 'user/session_sidebar_manager' %>
 
-      <div class="col-10 bg-white p-2 pt-3" style="width: 83%;" >
+      <div class="col-10 bg-white pt-2" style="width: 84%;" >
 
-        <div style="padding: 40px; background-color: #F9FAFB; border-radius: 27px">
-          <div style="background-color: white; border-radius: 17px">
-            <div style="padding: 30px;">
+        <div style="padding: 35px; background-color: #F9FAFB; border-radius: 27px">
+
+          <div style='text-align:center'>
+            <%= render 'layouts/pop_ups' %>
+          </div>
+
+          <div class="scbar_hide show">
+            <div style="background-color: white; border-radius: 17px">
+
+            <div class style="padding: 30px;">
               <div class="text-muted"> <!-- heading nahi banana hai (post_title)-->
                   <h5><%= image_tag('maze_logo.svg', style: 'margin-right:1rem') %>
                       <%= @post.user.first_name %></h5>
@@ -56,29 +63,10 @@
               <% end %><br>
             </div>
             </div>
+          </div>
+
         </div>
       </div>
 
   </div>
 </div>
-
-
-
-
-<!--  <div class>-->
-<!--    <div class="row">-->
-<!--      <div class="col-1 bg-whtie p-2 me-lg-5">-->
-
-        <!--Button-side-bar-->
-<!--        <div class='d-flex' style>-->
-<!--          <div class="container-fluid">-->
-<!--            <div style="align-content: flex-start; width: 11rem;">-->
-                <%#= render 'user/session_sidebar_manager', post: @post %>
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--      </div>-->
-
-<!--    </div>-->
-<!--  </div>-->

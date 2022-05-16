@@ -1,10 +1,11 @@
 
 <% if current_user %>
 
-      <% if current_page?(posts_path)%>
+      <% if current_page?(posts_path) || current_page?(search_path)%>
         <!--<ul class></ul>-->
         <div class style="margin-right: 10rem; width: 65%">
-          <input class="form-control me-5" style="font-family: FontAwesome !important; border-radius: 14px" type="search" placeholder="&#xf002  Search for something here...">
+          <!--id="searchPost"-->
+          <%= render 'search/search_bar' %>
         </div>
       <% elsif current_page?(admin_manager_menu_path) || current_page?('/manage/add/new_user') %>
         <div class="pt-1">
@@ -25,6 +26,26 @@
   </div>
 
 <% end %>
+
+<!--<script>-->
+<!--  var search_in_posts = () => {-->
+<!--      var filter = document.getElementById('searchPost').value.toUpperCase();-->
+
+<!--      var require_div = document.getElementById('allPosts');-->
+
+<!--      var content = require_div.getElementsByTagName('p')-->
+
+<!--      for ( var i=0; i < <%#= Post.all.count %>; i++) {-->
+<!--          var inside = content[0].textContent || content[0].innerText;-->
+
+<!--          if (inside.toUpperCase().indexOf(filter) > -1) {-->
+<!--            content[0].style.display = '';-->
+<!--          } else {-->
+<!--              content[0].style.display = 'not found';-->
+<!--          }-->
+<!--      }-->
+<!--  }-->
+<!--</script>-->
 
     <!--<small>-->
       <%#=  current_user.roles  %>

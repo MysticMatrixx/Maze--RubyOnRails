@@ -4,29 +4,35 @@
   <br>
   <div style="background-color: #ffffff; border-radius: 17px">
     <div style="padding: 30px;">
+
         <div class="text-muted"> <!-- heading nahi banana hai (post_title)-->
           <h5>
             <%= image_tag('maze_logo.svg', class:"me-1") %>
-            <% if post.user.id == current_user.id %>
-              You
-            <% else %>
-              <%= post.user.first_name %>
-            <% end %>
+              <% if post.user.id == current_user.id %>
+                You
+              <% else %>
+                <%= post.user.first_name %>
+              <% end %>
           </h5>
           <small>
+
             <%= time_ago_in_words(post.created_at) %> ago
             <small>&#8226</small>
             <%= post.status.to_str %>
+
           </small>
           <%= render 'posts/three_dots_dropdown', post: post %>
         </div>
       <br>
+
+      <!--id="allPosts"-->
       <div>
         <p class="sed"><!--post_description-->
           <%= post.description %>
         </p>
       </div>
     </div>
+
     <br>
     <div style="margin-left: 32px; color: #60616599">
       <!--likes-->
@@ -37,6 +43,7 @@
       <small>&#8226</small>
       <small><%= render 'comments/comment_count', post: post %></small>
     </div>
+
     <hr class="des"><!---------------------------------------------->
     <div class="d-flex" style="margin-left: 30px;">
       <!--like_btn-->

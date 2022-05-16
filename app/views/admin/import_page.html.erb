@@ -3,7 +3,6 @@
 
     <%= render 'user/session_sidebar_manager' %>
 
-
     <div class="p-2" style="width: 100%">
       <div class="col-10 bg-white" style="width: 99%">
         <div style="height: 88vh; padding: 3rem; background-color: #F9FAFB; border-radius: 17px;">
@@ -13,8 +12,8 @@
         </div>
 
             <!--import function is not yet built-->
-            <%= form_tag '#', multipart: true do%>
-              <div style="text-align: center; border: dotted #999999; border-radius: 15px; padding: 10rem; margin: 2rem">
+            <%= form_tag upload_users_path, multipart: true do%>
+              <div class="importss">
                 <%= file_field_tag :file %><br>
               </div>
 

@@ -14,7 +14,12 @@ class AdminController < ApplicationController
 
   # def report; end
 
-  # def import_users; end
+  # def import_page; end
+
+  def import_users
+    User.import(params[:file])
+    redirect_to admin_manager_menu_path, notice: 'CSV/Excel Imported!'
+  end
 
   # def change_password; end
 
@@ -103,6 +108,10 @@ class AdminController < ApplicationController
   end
 
   private
+
+  # def accessible_attributes
+  #   params.require(:user).permit(:id, :first_name, :last_name, :phone, :email, :password)
+  # end
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
