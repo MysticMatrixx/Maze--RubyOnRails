@@ -40,8 +40,7 @@ class AdminController < ApplicationController
                   filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
       end
       format.xlsx do
-        send_data @users.name_posts_comments_likes,
-                  filename: "All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+        response.headers['Content-Disposition'] = "attachment; filename = \"All_users_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx\""
       end
     end
   end
@@ -55,8 +54,7 @@ class AdminController < ApplicationController
                   filename: "User_more_than_10_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
       end
       format.xlsx do
-        send_data @users.up10_name_posts_comments_likes,
-                  filename: "User_more_than_10_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+        response.headers['Content-Disposition'] = "attachment; filename = \"User_more_than_10_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx\""
       end
     end
   end
@@ -70,9 +68,11 @@ class AdminController < ApplicationController
                   filename: "All_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.csv"
       end
       format.xlsx do
-        send_data @posts.description_comments_likes,
-                  filename: "All_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+        response.headers['Content-Disposition'] = "attachment; filename = \"All_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx\""
       end
+      # do
+      #   send_data filename: "All_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
+      # end
     end
   end
 

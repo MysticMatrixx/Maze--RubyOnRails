@@ -297,3 +297,8 @@
       font-size: 2rem;
       color: #24b068;
   }
+
+  .admin_page {
+      overflow-y:scroll;
+      height:76vh;
+  }

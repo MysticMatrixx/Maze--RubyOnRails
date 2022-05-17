@@ -1,0 +1,8 @@
+<%= search_form_for(@query, url: search_path, method: :get, class:'d-flex') do |f| %>
+  <%= f.search_field :user_first_name_or_description_i_cont_any,
+                     class:"form-control me-5",
+                     style:"font-family: FontAwesome; border-radius: 14px",
+                     placeholder:"  Search for something here..." %>
+
+  <!--<input class="form-control me-5" style="font-family: FontAwesome  ; border-radius: 14px" type="search" placeholder="&#xf002  Search for something here...">-->
+<% end %>

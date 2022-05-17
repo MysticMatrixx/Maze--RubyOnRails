@@ -1,0 +1,29 @@
+
+<div>
+  <div class="d-flex align-items-stretch">
+
+    <%= render 'user/session_sidebar_manager' %>
+
+
+    <div class="p-2" style="width: 100%">
+      <div class="col-10 bg-white" style="width: 99%">
+        <div style="padding: 9px; background-color: #F9FAFB; border-radius: 17px;">
+
+        <div style='text-align:center'>
+          <%= render 'layouts/pop_ups' %>
+        </div>
+
+          <div class="container-fluid pt-1">
+            <h4 class><%= (@posts.count) == 1 ? 'Result : ' : 'Results : ' %> <%= @posts.count %></h4>
+          </div>
+
+          <div class="container-fluid scbar_hide search_page">
+            <%= render 'posts/all_posts' %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

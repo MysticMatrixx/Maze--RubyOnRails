@@ -38,6 +38,7 @@ class User < ApplicationRecord
       user = find_by_id(row['id']) || new
       user.attributes = row.to_hash.slice(*accessible_attributes)
       user.save!
+      user.add_role :user
       # User.create! row.to_hash
     end
   end

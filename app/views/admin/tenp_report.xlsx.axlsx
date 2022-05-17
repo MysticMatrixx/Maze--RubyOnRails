@@ -1,0 +1,16 @@
+wb = xlsx_package.workbook
+s = wb.styles
+
+blue_cell = s.add_style bg_color: '1c72a3', fg_color: 'FFF', sz: 14, alignment: { horizontal: :center }
+centerize = s.add_style alignment: { horizontal: :center }
+
+wb.add_worksheet(name: "Users") do |sheet|
+  sheet.add_row ['id', 'name', 'posts', 'comments', 'likes'], style: [blue_cell, blue_cell, blue_cell, blue_cell, blue_cell]
+
+  @users.each do |user|
+    if (user.posts.count >= 10)
+        sheet.add_row [user.id, user.first_name + ' ' + user.last_name,
+                       user.posts.count, user.comments.count, user.likes.count], style: [Axlsx::STYLE_THIN_BORDER, centerize]
+    end
+  end
+end

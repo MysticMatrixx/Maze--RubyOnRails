@@ -11,7 +11,6 @@ class Post < ApplicationRecord
 
   validates :description, presence: true, length: { minimum: 5 }
 
-
   def self.description_comments_likes
     CSV.generate(headers: true) do |csv|
       csv << %w[description comments likes]
@@ -21,4 +20,5 @@ class Post < ApplicationRecord
       end
     end
   end
+
 end

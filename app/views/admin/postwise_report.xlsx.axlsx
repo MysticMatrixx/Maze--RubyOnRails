@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+s = wb.styles
+
+blue_cell = s.add_style bg_color: '1c72a3', fg_color: 'FFF', sz: 14, alignment: { horizontal: :center }
+
+wb.add_worksheet(name: "Posts") do |sheet|
+  sheet.add_row ['Description', 'comments', 'likes'], style: [blue_cell, blue_cell, blue_cell]
+
+  @posts.each do |post|
+    sheet.add_row [post.description, post.comments.count, post.likes.count], style: Axlsx::STYLE_THIN_BORDER, height: 50
+  end
+end
