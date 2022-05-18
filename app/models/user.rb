@@ -32,16 +32,16 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
-  def self.import(file)
-    accessible_attributes = %w[first_name last_name id password email phone]
-    CSV.foreach(file.path, headers: true) do |row|
-      user = find_by_id(row['id']) || new
-      user.attributes = row.to_hash.slice(*accessible_attributes)
-      user.save!
-      user.add_role :user
-      # User.create! row.to_hash
-    end
-  end
+  # def self.import(file)
+  #   accessible_attributes = %w[first_name last_name id password email phone]
+  #   CSV.foreach(file.path, headers: true) do |row|
+  #     user = find_by_id(row['id']) || new
+  #     user.attributes = row.to_hash.slice(*accessible_attributes)
+  #     user.save!
+  #     user.add_role :user
+  #     # User.create! row.to_hash
+  #   end
+  # end
 
   # Generate a CSV File of All User Records:
 

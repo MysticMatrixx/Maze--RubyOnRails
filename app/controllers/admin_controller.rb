@@ -14,10 +14,12 @@ class AdminController < ApplicationController
 
   # def report; end
 
+
   # def import_page; end
 
   def import_users
-    User.import(params[:file])
+    csv_file = File.open(params[:file])
+    ImportUsersJob.perform_now(csv_file, current_user)
     redirect_to admin_manager_menu_path, notice: 'CSV/Excel Imported!'
   end
 
@@ -70,9 +72,6 @@ class AdminController < ApplicationController
       format.xlsx do
         response.headers['Content-Disposition'] = "attachment; filename = \"All_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx\""
       end
-      # do
-      #   send_data filename: "All_posts_report_#{Date.today}_#{Time.now.to_formatted_s(:time)}.xlsx"
-      # end
     end
   end
 
@@ -108,10 +107,6 @@ class AdminController < ApplicationController
   end
 
   private
-
-  # def accessible_attributes
-  #   params.require(:user).permit(:id, :first_name, :last_name, :phone, :email, :password)
-  # end
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
