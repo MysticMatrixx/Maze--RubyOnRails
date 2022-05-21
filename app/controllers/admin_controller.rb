@@ -14,12 +14,42 @@ class AdminController < ApplicationController
 
   # def report; end
 
-
+  # def perform(csv_file_key, _current_user)
+  #
+  #   accessible_attributes = %w[first_name last_name id password email phone]
+  #   # role = %w[role]
+  #   CSV.open(csv_file_key, headers: true) do |row|
+  #     user = User.find_by_id(row['id']) || User.new
+  #     user.attributes = row.to_hash.slice(*accessible_attributes)
+  #     user.skip_confirmation!
+  #     user.save!
+  #     user.add_role :user
+  #     # user.add_role(row.to_hash.slice[*role])
+  #   end
+  # end
+  #
   # def import_page; end
 
   def import_users
-    csv_file = File.open(params[:file])
-    ImportUsersJob.perform_now(csv_file, current_user)
+    # binding.pry
+    # path = File.open params[:file_csv]
+    skip = true
+
+    # UPDATING USER IS NOT FUNCTIONING,
+    # ONLY UPLOADING WORKS!
+    CSV.foreach(params[:file_csv].path, headers: false) do |row|
+      unless skip
+        accessible_attributes = %w[first_name last_name password email phone]
+        # FixParamsWorker.perform_async(row)
+        # user = find_by_id(row['id']) || new
+        # user.attributes = row.to_hash.slice(*accessible_attributes)
+        hash = Hash[accessible_attributes.zip(row)]
+        ImportFileWorker.perform_async(hash)
+      end
+      skip = false
+    end
+    AdminMailer.with(user: current_user, file: params[:file_csv].original_filename).csv_user_created.deliver_later
+    # User.import(params[:file_csv])
     redirect_to admin_manager_menu_path, notice: 'CSV/Excel Imported!'
   end
 
@@ -79,7 +109,7 @@ class AdminController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    @user.skip_confirmation!
     respond_to do |format|
       if @user.save
         @user.add_role params[:role]
@@ -107,6 +137,19 @@ class AdminController < ApplicationController
   end
 
   private
+
+  def create_blob
+    file_name = params[:file_csv]
+    file = File.open(file_name)
+    result = ActiveStorage::Blob.service
+    # result = ActiveStorage::Blob.create_and_upload! io: file,
+    #                                                 filename: file_name.original_filename
+    key = 'unique_key'
+    result.upload(key, file)
+    result.download(key)
+    # result.delete(key)
+    file.close
+  end
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation)

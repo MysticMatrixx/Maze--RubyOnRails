@@ -1,0 +1,21 @@
+<div style="background-color: lightcoral; border-radius: 17px">
+  <div style="text-align: center; background-color: #F9FAFB; padding: 3rem; margin: 3em">
+    <div style='border: dashed; border-color: #1B2BB6; background-color:#fff; padding: 20px; border-radius: 19px; margin-left: 10rem; margin-right: 10rem' >
+      <%= image_tag attachments['maze.svg'].url, alt: 'MAZE', height: '10%', width: '10%' %>
+    </div>
+    <h2 style="color: #fff; background: linear-gradient(180deg, #1B2BB6 0%, #3dd5f3 90%); border-radius: 17px">
+      [^^MADMIN^^]
+    </h2>
+    <p style="color: #2E2F30; background-color: #20c997; border-radius: 17px">
+    #> <%= @user.email %> --> uploaded--> '<%= @file.to_s %>'
+    </p>
+<!--    <p>-->
+<!--      CHECK OUT NOW!>> <%#= link_to 'ADMIN-MANAGER', '/manage/users' %>-->
+<!--    </p>-->
+  </div>
+</div>
+
+
+<!--<p>-->
+<!--  <%#= @greeting %>, find me in app/views/admin_mailer/csv_user_created.html.erb-->
+<!--</p>-->

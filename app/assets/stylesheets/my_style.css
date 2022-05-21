@@ -289,16 +289,42 @@
   }
 
   .importss {
-      text-align: center;
-      border: dotted #999999;
-      border-radius: 15px;
-      padding: 10rem;
-      margin: 2rem;
-      font-size: 2rem;
-      color: #24b068;
+      position: relative;
+      overflow: hidden;
+  }
+
+  .importss input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      cursor: inherit;
+      display: block;
   }
 
   .admin_page {
       overflow-y:scroll;
       height:76vh;
+  }
+
+  .cloud_sym {
+      position: absolute;
+      left:-3%;
+      right: 2%;
+      top: 0;
+      bottom: 0;
+      opacity: 50%;
+  }
+
+  #notice_timeout {
+        color: lawngreen;
+        text-align: center;
+  }
+
+  #alert_timeout {
+        color: orangered;
+        text-align: center;
   }

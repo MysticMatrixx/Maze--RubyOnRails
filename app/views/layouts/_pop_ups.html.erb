@@ -1,7 +1,22 @@
+<style>
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div>
   <% if notice %>
-    <p class="notice" style="color: lawngreen; text-align: center"><%= notice %></p>
+    <p class="notice" id="notice_timeout" style><%= notice %></p>
   <% elsif alert %>
-    <p class="alert" style="color: orangered; text-align: center"><%= alert %></p>
+    <p class="alert" id="alert_timeout" style><%= alert %></p>
   <% end %>
 </div>
+
+<script>
+  setTimeout(function() {
+    $('#notice_timeout').fadeOut('fast');
+  }, 3000);
+
+  setTimeout(function() {
+    $('#alert_timeout').fadeOut('fast');
+}, 3000);
+</script>

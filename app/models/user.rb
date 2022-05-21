@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   after_create :assign_default_role, if: :new_record?
 
@@ -14,6 +14,7 @@ class User < ApplicationRecord
                     numericality: { only_integer: true }
   # { case_sensitive: false }
 
+  # has_one_attached :file_csv
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -34,9 +35,10 @@ class User < ApplicationRecord
 
   # def self.import(file)
   #   accessible_attributes = %w[first_name last_name id password email phone]
-  #   CSV.foreach(file.path, headers: true) do |row|
+  #   CSV.foreach(file, headers: true) do |row|
   #     user = find_by_id(row['id']) || new
   #     user.attributes = row.to_hash.slice(*accessible_attributes)
+  #     user.skip_confirmation!
   #     user.save!
   #     user.add_role :user
   #     # User.create! row.to_hash

@@ -1,0 +1,4 @@
+id,first_name,last_name,password,email,phone, role
+17,Deepak,Jha,123456,deepak@mail.com,9488487110,user
+18,Saarada,Tripathi,123456,make@mail.com,8985747373,user
+2,Mathur,tushit,123456,maxi@mail.com,8493022991,admin
