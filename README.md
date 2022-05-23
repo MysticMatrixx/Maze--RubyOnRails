@@ -3,20 +3,9 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover (in your system):
+Things you may want to cover:
 
-* Rails version  7.0.2.3
-* Ruby version 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-linux]
-* Gem 3.3.7
-* curl 7.68.0
-* rbenv 1.2.0-14-gc6cc0a1
-* sqlite3 
-
-Commands :
-
-* apt-get ruby-full
-* sudo apt-get install libsqlite3-dev
-* 
+* Ruby version
 
 * System dependencies
 
