@@ -10,7 +10,7 @@ class AdminMailer < ApplicationMailer
     @file = params[:file]
 
     # @greeting = "Hi"
-    attachments['maze.svg'] = File.read('app/assets/images/maze_logo.svg')
+    attachments['maze_logo.svg'] = File.read('app/assets/images/maze_logo.svg')
 
     mail(
       from: 'MADMIN <admin@maze.com>',

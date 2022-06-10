@@ -328,3 +328,14 @@
         color: orangered;
         text-align: center;
   }
+
+  .hide {
+        position: absolute;
+        z-index: 9999;
+        top: 14px;
+        right: 10px;
+        font-size: 18px;
+        color: #F56464;
+        transition: 0.3s;
+        cursor: pointer;
+  }

@@ -35,11 +35,10 @@ class AdminController < ApplicationController
     # path = File.open params[:file_csv]
     skip = true
 
-    # UPDATING USER IS NOT FUNCTIONING,
-    # ONLY UPLOADING WORKS!
+    # Roles Assiging not working!
     CSV.foreach(params[:file_csv].path, headers: false) do |row|
       unless skip
-        accessible_attributes = %w[first_name last_name password email phone]
+        accessible_attributes = %w[id first_name last_name password email phone]
         # FixParamsWorker.perform_async(row)
         # user = find_by_id(row['id']) || new
         # user.attributes = row.to_hash.slice(*accessible_attributes)
@@ -137,19 +136,6 @@ class AdminController < ApplicationController
   end
 
   private
-
-  def create_blob
-    file_name = params[:file_csv]
-    file = File.open(file_name)
-    result = ActiveStorage::Blob.service
-    # result = ActiveStorage::Blob.create_and_upload! io: file,
-    #                                                 filename: file_name.original_filename
-    key = 'unique_key'
-    result.upload(key, file)
-    result.download(key)
-    # result.delete(key)
-    file.close
-  end
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation)

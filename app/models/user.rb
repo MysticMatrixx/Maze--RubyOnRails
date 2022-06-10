@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  after_create :assign_default_role, if: :new_record?
+  after_create :assign_default_role
 
   validates :phone, presence: true,
                     uniqueness: true,
@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+
   def active_for_authentication?
     super and is_active?
   end
@@ -30,20 +31,19 @@ class User < ApplicationRecord
   # private
 
   def assign_default_role
-    self.role ||= :user
+    add_role(:user) if roles.blank?
   end
 
-  # def self.import(file)
-  #   accessible_attributes = %w[first_name last_name id password email phone]
-  #   CSV.foreach(file, headers: true) do |row|
-  #     user = find_by_id(row['id']) || new
-  #     user.attributes = row.to_hash.slice(*accessible_attributes)
-  #     user.skip_confirmation!
-  #     user.save!
-  #     user.add_role :user
-  #     # User.create! row.to_hash
-  #   end
-  # end
+  def self.import(row)
+    accessible_attributes = %w[first_name last_name id password email phone]
+    # CSV.foreach(file, headers: true) do |row|
+    user = find_by_id(row['id']) || new
+    user.attributes = row.slice(*accessible_attributes)
+    user.skip_confirmation!
+    user.save!
+    user.add_role :user
+    # User.create! row.to_hash
+  end
 
   # Generate a CSV File of All User Records:
 
