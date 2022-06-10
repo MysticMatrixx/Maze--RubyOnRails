@@ -1,0 +1,103 @@
+<style>
+  .notification {
+      width: 100%;
+      position: absolute;
+      height: 3.3em;
+      left: 50%;
+      transform: translatex(-50%);
+      background-color: #606165;
+      box-shadow: 0 2px 11px rgba(0, 0, 0, 0.25);
+      border-radius: 14px;
+      overflow: hidden;
+      display: none;
+      /*justify-content: center;*/
+      align-content: center;
+      gap: 2em;
+      padding: 0.4rem;
+      margin-left: 4rem;
+
+  }
+
+  .notification_close {
+      color:orangered;
+      padding: 1rem;
+      display: flex;
+      cursor: pointer;
+  }
+
+  .notification p {
+      color: #fff;
+      margin-left: 1rem;
+      margin-top: 0.1rem;
+  }
+
+  .notification button {
+      position: absolute;
+      width: 10%;
+      height: 2.4rem;
+      background-color: #E9FCDA;
+      right: 5rem;
+  }
+
+  .notification_close {
+      position: absolute;
+      right: 0;
+      top:0.2rem;
+  }
+
+  .background-blur {
+      position: absolute;
+      bottom: 5.4rem;
+      width: 76%;
+  }
+
+  .notification.sh {
+      animation: bottom-up 300ms ease-in-out reverse;
+      display: flex;
+  }
+
+  @keyframes bottom-up{
+      0%{
+          opacity: 0;
+          top: 0;
+      }
+      5%{
+          opacity: 0;
+      }
+      100%{
+          opacity: 1;
+          top: 3rem;
+      }
+  }
+
+</style>
+
+<div>
+  <button id="delete" class="btn btn-outline-danger">Deactivate</button>
+</div>
+
+<div class="background-blur">
+  <div class="notification" id='notification'>
+    <p class="pt-2">ID Successfully Deactivated !</p>
+    <button class="btn-outline-success">Undo</button>
+    <div id="close" class="notification_close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+  var deleteBtn = document.getElementById("delete");
+  var notification = document.getElementById("notification");
+  var closeBtn = document.getElementById('close');
+
+  deleteBtn.addEventListener('click', ()=>{
+      notification.classList.add("sh");
+  })
+
+  closeBtn.addEventListener('click', ()=>{
+      notification.classList.remove("sh");
+  })
+</script>
