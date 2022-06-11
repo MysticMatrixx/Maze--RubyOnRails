@@ -1,25 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.1.2p20
+* Rails version 7.0.3
+* Gem version 3.3.7
+* yarn version 1.22.19
 
-* System dependencies
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////////
 
-* Configuration
+* Services (job queues, mail sender, etc.)
+-- Sidekiq, 
+-- Sendgrid ( won't work ), 
+-- Devise, 
+-- Caxlsx, Caxlxs_rails,
+-- Rolify,
+-- Ransack,
 
-* Database creation
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////////
 
-* Database initialization
+* Start server with :
+- rails s
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# Admin_MAZE--ROR ᕙ( ~ . ~ )ᕗ
+{ My first project at my first Internship }
 
-* Deployment instructions
-
-* ...
-# Admin_MAZE--ROR
